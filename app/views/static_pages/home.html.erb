@@ -1,0 +1,12 @@
+<div class="top-wrapper">
+  <div class="top-img">
+    <%= link_to image_tag("top-img.jpg", alt: "top-img"), root_path %>
+  </div>
+  <div class="top-register-wrapper container">
+    <div class="row register-button-wrapper">
+      <%= link_to "高校生として登録", new_student_registration_path, class: "btn btn-primary" %>
+      <%= link_to "学校関係者として登録", new_school_registration_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+
+</div>
