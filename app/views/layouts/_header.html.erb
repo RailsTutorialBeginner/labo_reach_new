@@ -8,7 +8,7 @@
         <li><%= link_to "研究室", '/laboratories/index' %></li>
         <li><%= link_to "記事", "#" %></li>
         <li><%= link_to "イベント", "#" %></li>
-        <% if student_signed_in? %>
+        <% if 1 %> # student_signed_in?
           <li><%= link_to "Users", '#' %></li>
           <li><%= link_to "メッセージ", "/rooms/index" %></li>
           <li class="dropdown">
@@ -20,7 +20,7 @@
               <li><%= link_to "設定", '#' %></li>
               <li class="divider"></li>
               <li>
-                <%= link_to "ログアウト", destroy_student_session_path ,:method => :delete %>
+                <%= link_to "ログアウト", "#" ,:method => :delete %> # destroy_student_session_path
               </li>
             </ul>
           </li>
