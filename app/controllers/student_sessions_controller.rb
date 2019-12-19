@@ -7,7 +7,7 @@ class StudentSessionsController < ApplicationController
     if student && student.authenticate(params[:session][:password])
       student_log_in student
       params[:session][:remember_me] == '1' ? student_remember(student) : student_forget(student)
-      redirect_to student
+      redirect_back_or student
     else
       flash.now[:danger] = "Invalid email/password combination"
       render 'new'

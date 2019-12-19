@@ -10,6 +10,10 @@ module StudentSessionsHelper
     cookies.permanent[:remember_token] = student.remember_token
   end
 
+  def current_student?(student)
+    student == current_student
+  end
+
   def current_student
     if (student_id = session[:student_id])
       @current_student ||= Student.find_by(id: student_id)
@@ -36,5 +40,14 @@ module StudentSessionsHelper
     student_forget(current_student)
     session.delete(:student_id)
     @current_student = nil
+  end
+
+  def redirect_back_or(default)
+    redirect_to(session[:forwarding_url] || default)
+    session.delete(:forwarding_url)
+  end
+
+  def store_location
+    session[:forwarding_url] = request.original_url if request.get?
   end
 end
