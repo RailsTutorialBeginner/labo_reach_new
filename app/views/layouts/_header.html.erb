@@ -8,7 +8,7 @@
         <li><%= link_to "研究室", '/laboratories/index' %></li>
         <li><%= link_to "記事", "#" %></li>
         <li><%= link_to "イベント", "#" %></li>
-        <% if 1 %> # student_signed_in?
+        <% if student_logged_in? %>
           <li><%= link_to "Users", '#' %></li>
           <li><%= link_to "メッセージ", "/rooms/index" %></li>
           <li class="dropdown">
@@ -20,29 +20,13 @@
               <li><%= link_to "設定", '#' %></li>
               <li class="divider"></li>
               <li>
-                <%= link_to "ログアウト", "#" ,:method => :delete %> # destroy_student_session_path
-              </li>
-            </ul>
-          </li>
-        <% elsif school_signed_in? %>
-          <li><%= link_to "Users", '#' %></li>
-          <li><%= link_to "メッセージ", "/rooms/index" %></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              アカウント <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "プロフィール", "#" %></li>
-              <li><%= link_to "設定", '#' %></li>
-              <li class="divider"></li>
-              <li>
-                <%= link_to "ログアウト", destroy_school_session_path ,:method => :delete %>
+                <%= link_to "ログアウト", student_logout_path, :method => :delete %>
               </li>
             </ul>
           </li>
         <% else %>
-          <li><%= link_to "高校生としてログイン", new_student_session_path %></li>
-          <li><%= link_to "学校関係者としてログイン", new_school_session_path %></li>
+          <li><%= link_to "高校生としてログイン", student_login_path %></li>
+          <li><%= link_to "学校関係者としてログイン", "#" %></li>
         <% end %>
       </ul>
     </nav>

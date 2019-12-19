@@ -10,6 +10,7 @@ class StudentsController < ApplicationController
   def create
     @student = Student.new(student_params)
     if @student.save
+      student_log_in @student
       flash[:success] = "Welcome to Labo Reach!"
       redirect_to @student
     else
