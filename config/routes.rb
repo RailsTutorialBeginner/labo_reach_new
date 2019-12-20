@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'student_password_resets/new'
-
-  get 'student_password_resets/edit'
-
   root 'static_pages#home'
   get  '/help',    to: 'static_pages#help'
   get  '/about',   to: 'static_pages#about'
@@ -13,6 +9,7 @@ Rails.application.routes.draw do
   get '/student_login', to: 'student_sessions#new'
   post '/student_login', to: 'student_sessions#create'
   delete '/student_logout', to: 'student_sessions#destroy'
+  get '/school_signup', to: 'schools#new'
   resources :students
   resources :student_account_activations, only: [:edit]
   resources :student_password_resets, only: [:new, :create, :edit, :update]
