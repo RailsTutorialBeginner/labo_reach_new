@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   post '/student_login', to: 'student_sessions#create'
   delete '/student_logout', to: 'student_sessions#destroy'
   resources :students
+  resources :student_account_activations, only: [:edit]
 end

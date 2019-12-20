@@ -1,0 +1,2 @@
+module StudentAccountActivationsHelper
+end

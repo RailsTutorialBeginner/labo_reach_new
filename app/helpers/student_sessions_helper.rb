@@ -19,7 +19,7 @@ module StudentSessionsHelper
       @current_student ||= Student.find_by(id: student_id)
     elsif (student_id = cookies.signed[:student_id])
       student = Student.find_by(id: student_id)
-      if student && student.authenticated?(cookies[:remember_token])
+      if student && student.authenticated?(:remember, cookies[:remember_token])
         student_log_in student
         @current_student = student
       end
