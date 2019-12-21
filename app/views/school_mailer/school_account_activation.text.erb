@@ -1,0 +1,5 @@
+Hi <%= @school.name %>,
+
+Welcome to the Sample App! Click on the link below to activate your account:
+
+<%= edit_school_account_activation_url(@school.activation_token, email: @school.email) %>

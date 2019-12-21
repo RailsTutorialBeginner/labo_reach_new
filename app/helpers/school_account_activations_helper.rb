@@ -1,0 +1,2 @@
+module SchoolAccountActivationsHelper
+end
