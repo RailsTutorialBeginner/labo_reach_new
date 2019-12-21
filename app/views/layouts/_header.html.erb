@@ -32,17 +32,17 @@
               アカウント <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-              <li><%= link_to "プロフィール", "#" %></li>
+              <li><%= link_to "プロフィール", current_school %></li>
               <li><%= link_to "設定", "#" %></li>
               <li class="divider"></li>
               <li>
-                <%= link_to "ログアウト", "#", :method => :delete %>
+                <%= link_to "ログアウト", school_logout_path, :method => :delete %>
               </li>
             </ul>
           </li>
         <% else %>
           <li><%= link_to "高校生としてログイン", student_login_path %></li>
-          <li><%= link_to "学校関係者としてログイン", "#" %></li>
+          <li><%= link_to "学校関係者としてログイン", school_login_path %></li>
         <% end %>
       </ul>
     </nav>
