@@ -10,6 +10,7 @@ class SchoolsController < ApplicationController
   def create
     @school = School.new(school_params)
     if @school.save
+      school_log_in @school
       flash[:success] = "Welcome to Labo Reach!"
       redirect_to @school
     else
