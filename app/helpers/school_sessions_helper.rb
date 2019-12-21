@@ -10,6 +10,10 @@ module SchoolSessionsHelper
     cookies.permanent[:remember_token] = school.remember_token
   end
 
+  def current_school?(school)
+    school == current_school
+  end
+
   def current_school
     if (school_id = session[:school_id])
       @current_school ||= School.find_by(id: school_id)
@@ -42,5 +46,16 @@ module SchoolSessionsHelper
     school_forget(current_school)
     session.delete(:school_id)
     @current_school = nil
+  end
+
+  # 記憶したURL (もしくはデフォルト値) にリダイレクト
+  def redirect_back_or(default)
+    redirect_to(session[:forwarding_url] || default)
+    session.delete(:forwarding_url)
+  end
+
+  # アクセスしようとしたURLを覚えておく
+  def store_location
+    session[:forwarding_url] = request.original_url if request.get?
   end
 end
