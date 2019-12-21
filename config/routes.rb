@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   delete '/student_logout', to: 'student_sessions#destroy'
   get '/school_signup', to: 'schools#new'
   resources :students
+  resources :schools
   resources :student_account_activations, only: [:edit]
   resources :student_password_resets, only: [:new, :create, :edit, :update]
 end
