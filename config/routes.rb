@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'school_sessions/new'
-
   root 'static_pages#home'
   get  '/help',    to: 'static_pages#help'
   get  '/about',   to: 'static_pages#about'
@@ -18,5 +16,7 @@ Rails.application.routes.draw do
   resources :students
   resources :schools
   resources :student_account_activations, only: [:edit]
+  resources :school_account_activations, only: [:edit]
   resources :student_password_resets, only: [:new, :create, :edit, :update]
+  resources :school_password_resets, only: [:new, :create, :edit, :update]
 end
