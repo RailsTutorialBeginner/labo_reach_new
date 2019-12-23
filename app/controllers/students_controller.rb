@@ -55,7 +55,6 @@ class StudentsController < ApplicationController
 
     # before action
 
-    # confirm logged in student
     def logged_in_student
       unless student_logged_in?
         store_location

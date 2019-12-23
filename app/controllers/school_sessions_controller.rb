@@ -5,9 +5,16 @@ class SchoolSessionsController < ApplicationController
   def create
     school = School.find_by(email: params[:session][:email].downcase)
     if school && school.authenticate(params[:session][:password])
-      school_log_in school
-      params[:session][:remember_me] ==  '1' ? school_remember(school) : school_forget(school)
-      redirect_back_or school
+      if school.activated?
+        school_log_in school
+        params[:session][:remember_me] ==  '1' ? school_remember(school) : school_forget(school)
+        redirect_back_or school
+      else
+        message = "Account not activated."
+        message += "Check your email for the activation link."
+        flash[:warning] = message
+        redirect_to root_url
+      end
     else
       flash.now[:danger] = "Invalid email/password combination"
       render 'new'

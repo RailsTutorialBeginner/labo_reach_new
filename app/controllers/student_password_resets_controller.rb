@@ -28,6 +28,7 @@ class StudentPasswordResetsController < ApplicationController
       render 'edit'
     elsif @student.update_attributes(student_params)
       student_log_in @student
+      @student.update_attribute(:reset_digest, nil)
       flash[:success] = "Password has been reset."
       redirect_to @student
     else

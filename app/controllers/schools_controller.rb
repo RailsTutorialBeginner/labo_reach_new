@@ -8,19 +8,20 @@ class SchoolsController < ApplicationController
   end
 
   def index
-    @schools = School.paginate(page: params[:page])
+    @schools = School.where(activated: true).paginate(page: params[:page])
   end
 
   def show
     @school = School.find(params[:id])
+    redirect_to root_url and return unless @school.activated?
   end
 
   def create
     @school = School.new(school_params)
     if @school.save
-      school_log_in @school
-      flash[:success] = "Welcome to Labo Reach!"
-      redirect_to @school
+      @school.send_activation_email
+      flash[:info] = "Please check your email to activate your account."
+      redirect_to root_url
     else
       render 'new'
     end
