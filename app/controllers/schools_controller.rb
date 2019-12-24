@@ -55,14 +55,6 @@ class SchoolsController < ApplicationController
 
     # before action
 
-    def logged_in_school
-      unless school_logged_in?
-        store_location
-        flash[:danger] = "Please log in."
-        redirect_to school_login_url
-      end
-    end
-
     def correct_school
       @school = School.find(params[:id])
       redirect_to(root_url) unless current_school?(@school)

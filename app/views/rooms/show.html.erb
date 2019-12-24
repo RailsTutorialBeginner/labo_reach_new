@@ -1,0 +1,44 @@
+<% if student_logged_in? %>
+  <h3><%= @school.name %>とのチャットルーム</h3>
+  <div class="chat-field">
+    <% @messages.each do |message| %>
+      <!-- メッセージがUserによるものだったら -->
+      <% if message.is_student %>
+        <!-- メッセージを右に寄せる -->
+        <div class="right-message">
+          <%= message.content %>
+        </div>
+      <!-- メッセージがShopによるものだったら -->
+      <% else %>
+        <!-- メッセージを左に寄せる -->
+        <div class="left-message">
+          <%= message.content %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% elsif school_logged_in? %>
+  <h3><%= @student.name %>とのチャットルーム</h3>
+  <div class="chat-field">
+    <% @messages.each do |message| %>
+      <!-- メッセージがUserによるものだったら -->
+      <% if message.is_student %>
+        <!-- メッセージを左に寄せる -->
+        <div class="left-message">
+          <%= message.content %>
+        </div>
+      <!-- メッセージがShopによるものだったら -->
+      <% else %>
+        <!-- メッセージを右に寄せる -->
+        <div class="right-message">
+          <%= message.content %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= form_for [@room, @message] do |f| %>
+  <%= f.text_field :content %>
+  <%= f.submit "メッセージを送る"%>
+<% end %>

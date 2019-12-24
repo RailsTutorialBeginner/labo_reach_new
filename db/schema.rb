@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191223063345) do
+ActiveRecord::Schema.define(version: 20191224061832) do
+
+  create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "room_id"
+    t.boolean "is_student"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_messages_on_room_id"
+  end
+
+  create_table "rooms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "student_id"
+    t.bigint "school_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["school_id"], name: "index_rooms_on_school_id"
+    t.index ["student_id"], name: "index_rooms_on_student_id"
+  end
 
   create_table "schools", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -44,4 +62,7 @@ ActiveRecord::Schema.define(version: 20191223063345) do
     t.index ["email"], name: "index_students_on_email", unique: true
   end
 
+  add_foreign_key "messages", "rooms"
+  add_foreign_key "rooms", "schools"
+  add_foreign_key "rooms", "students"
 end

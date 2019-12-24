@@ -1,0 +1,50 @@
+<!--Studentでログインしてたら-->
+<% if student_logged_in? %>
+  ~<%= current_student.name %>がログインしてます~
+  <%= link_to "ログアウト", student_logout_path ,:method => :delete %>
+  <br>
+  <h2>学校一覧</h2>
+  <br>
+
+  <% @schools.each do |school| %>
+    <%= school.name %>
+    <% if @school_ids.include?(school.id) %>
+      <br>
+      <%= link_to "チャットへ", room_path(current_student.rooms.find_by(school_id: school.id)) %><br>
+    <% else %>
+      <%= form_for Room.new do |f| %>
+        <%= f.hidden_field :school_id, :value => school.id %>
+        <%= f.submit %>
+      <% end %>
+    <% end %>
+  <% end %>
+<!--Schoolでログインしてたら-->
+<% elsif school_logged_in? %>
+  <h2>生徒一覧</h2>
+  <br>
+  ~<%= current_school.name %>がログインしてます~
+  <%= link_to "ログアウト", school_logout_path ,:method => :delete %>
+  <br>
+
+  <% @students.each do |student| %>
+    <%= student.name %>
+    <% if @student_ids.include?(student.id) %>
+      <br>
+      <%= link_to "チャットへ", room_path(current_school.rooms.find_by(student_id: student.id)) %><br>
+    <% else %>
+      <%= form_for Room.new do |f| %>
+        <%= f.hidden_field :student_id, :value => student.id %>
+        <%= f.submit %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+<!--ログインしてなかったら-->
+<% else %>
+  <h3>生徒の方はこちら</h3>
+  <%= link_to "ログイン", student_login_path %>
+  <%= link_to "新規登録", student_signup_path %>
+  <h3>学校関係者の方はこちら</h3>
+  <%= link_to "ログイン", school_login_path %>
+  <%= link_to "新規登録", school_signup_path %>
+<% end %>

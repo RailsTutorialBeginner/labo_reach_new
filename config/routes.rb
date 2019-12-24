@@ -19,4 +19,7 @@ Rails.application.routes.draw do
   resources :school_account_activations, only: [:edit]
   resources :student_password_resets, only: [:new, :create, :edit, :update]
   resources :school_password_resets, only: [:new, :create, :edit, :update]
+  resources :rooms, only: [:index, :show, :create] do
+    resources :messages, only: [:create]
+  end
 end
