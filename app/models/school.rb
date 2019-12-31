@@ -1,4 +1,5 @@
 class School < ApplicationRecord
+  has_many :events, dependent: :destroy
   has_many :rooms, dependent: :destroy
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save :downcase_email
@@ -53,6 +54,11 @@ class School < ApplicationRecord
 
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
+  end
+
+  # 後で使う？
+  def feed
+    Event.where("school_id = ?", id)
   end
 
   private

@@ -7,5 +7,19 @@
         <%= @school.name %>
       </h1>
     </section>
+    <% if school_logged_in? %>
+      <section class="event_form">
+        <%= render 'shared/event_form' %>
+      </section>
+    <% end %>
   </aside>
+  <div class="col-md-8">
+    <% if @school.events.any? %>
+      <h3>Events (<%= @school.events.count %>)</h3>
+      <ol class="events">
+        <%= render @events %>
+      </ol>
+      <%= will_paginate @events %>
+    <% end %>
+  </div>
 </div>

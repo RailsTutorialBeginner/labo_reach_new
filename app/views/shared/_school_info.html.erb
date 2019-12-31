@@ -1,0 +1,4 @@
+<%= link_to gravatar_for(current_school, size: 50), current_school %>
+<h1><%= current_school.name %></h1>
+<span><%= link_to "view my profile", current_school %></span>
+<span><%= pluralize(current_school.events.count, "event") %></span>
