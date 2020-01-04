@@ -1,0 +1,15 @@
+<li id="laboratory-<%= laboratory.id %>">
+  <%= link_to gravatar_for(laboratory.school, size: 50), laboratory.school %>
+  <span class="school"><%= link_to laboratory.school.name, laboratory.school %></span>
+  <span class="laboratory"><%= laboratory.name %></span>
+  <span class="content">
+    <%= laboratory.content %>
+    <%= image_tag laboratory.picture.url if laboratory.picture? %>
+  </span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(laboratory.created_at) %> ago.
+    <% if current_school?(laboratory.school) %>
+      <%= link_to "delete", laboratory, method: :delete, data: { confirm: "You sure?" } %>
+    <% end %>
+  </span>
+</li>

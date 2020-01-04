@@ -5,7 +5,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "トップ", root_path %></li>
         <li><%= link_to "ヘルプ", help_path %></li>
-        <li><%= link_to "研究室", '#' %></li>
+        <li><%= link_to "研究室", laboratories_path %></li>
         <li><%= link_to "イベント", events_path %></li>
         <% if student_logged_in? %>
           <li><%= link_to "Students", students_path %></li>

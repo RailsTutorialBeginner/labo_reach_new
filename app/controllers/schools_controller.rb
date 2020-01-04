@@ -16,6 +16,7 @@ class SchoolsController < ApplicationController
   def show
     @school = School.find(params[:id])
     @event = current_school.events.build if school_logged_in?
+    @laboratory = current_school.laboratories.build if school_logged_in?
     @events = @school.events.paginate(page: params[:page])
     redirect_to root_url and return unless @school.activated?
   end

@@ -8,8 +8,13 @@
       </h1>
     </section>
     <% if school_logged_in? %>
+      <h3>New event</h3>
       <section class="event_form">
         <%= render 'shared/event_form' %>
+      </section>
+      <h3>New laboratory</h3>
+      <section class="laboratory_form">
+        <%= render 'shared/laboratory_form' %>
       </section>
     <% end %>
   </aside>

@@ -1,4 +1,5 @@
 class School < ApplicationRecord
+  has_many :laboratories, dependent: :destroy
   has_many :events, dependent: :destroy
   has_many :rooms, dependent: :destroy
   attr_accessor :remember_token, :activation_token, :reset_token
