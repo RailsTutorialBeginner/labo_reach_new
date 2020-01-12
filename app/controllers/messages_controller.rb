@@ -10,7 +10,10 @@ class MessagesController < ApplicationController
     end
     @message.room_id = @room.id
     if @message.save
-      redirect_to room_url(@room)
+      respond_to do |format|
+        format.html { redirect_to room_url(@room) }
+        format.json
+      end
     else
       flash[:danger] = "Failed to send message"
       redirect_to room_url(@room)

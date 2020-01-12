@@ -38,7 +38,7 @@
   </div>
 <% end %>
 
-<%= form_for [@room, @message] do |f| %>
-  <%= f.text_field :content %>
-  <%= f.submit "メッセージを送る"%>
+<%= form_for [@room, @message], id: "new_message" do |f| %>
+  <%= f.text_field :content, id: "message_content" %>
+  <%= f.submit "メッセージを送る", class: "submit-btn" %>
 <% end %>

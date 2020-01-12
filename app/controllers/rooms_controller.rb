@@ -26,7 +26,7 @@ class RoomsController < ApplicationController
         @school = @room.school
         respond_to do |format|
           format.html # html形式でアクセスがあった場合は特に何もなし(@messages = Message.allして終わり）
-          format.json { @new_message = Message.where(room_id: @room.id).where('id > ?', params[:message][:id]) } # json形式でアクセスがあった場合は、params[:message][:id]よりも大きいidがないかMessageから検索して、@new_messageに代入する
+          format.json { @new_message = Message.where(room_id: @room.id).where(is_student: false).where('id > ?', params[:message][:school_id]) } # json形式でアクセスがあった場合は、params[:message][:id]よりも大きいidがないかMessageから検索して、@new_messageに代入する
         end
       else
         redirect_to root_url
@@ -36,7 +36,7 @@ class RoomsController < ApplicationController
         @student = @room.student
         respond_to do |format|
           format.html # html形式でアクセスがあった場合は特に何もなし(@messages = Message.allして終わり）
-          format.json { @new_message = Message.where(room_id: @room.id).where('id > ?', params[:message][:id]) } # json形式でアクセスがあった場合は、params[:message][:id]よりも大きいidがないかMessageから検索して、@new_messageに代入する
+          format.json { @new_message = Message.where(room_id: @room.id).where(is_student: true).where('id > ?', params[:message][:student_id]) } # json形式でアクセスがあった場合は、params[:message][:id]よりも大きいidがないかMessageから検索して、@new_messageに代入する
         end
       else
         redirect_to root_url
