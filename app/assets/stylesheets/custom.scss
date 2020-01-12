@@ -202,12 +202,22 @@ input {
   }
 }
 
-.left-message{
-  text-align: left;
+.student-field {
+  .student-message {
+    text-align: right;
+  }
+  .school-message {
+    text-align: left;
+  }
 }
 
-.right-message{
-  text-align: right;
+.school-field {
+  .student-message {
+    text-align: left;
+  }
+  .school-message {
+    text-align: right;
+  }
 }
 
 /* Students index */

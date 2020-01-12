@@ -24,12 +24,20 @@ class RoomsController < ApplicationController
     if student_logged_in?
       if @room.student.id == current_student.id
         @school = @room.school
+        respond_to do |format|
+          format.html # html形式でアクセスがあった場合は特に何もなし(@messages = Message.allして終わり）
+          format.json { @new_message = Message.where(room_id: @room.id).where('id > ?', params[:message][:id]) } # json形式でアクセスがあった場合は、params[:message][:id]よりも大きいidがないかMessageから検索して、@new_messageに代入する
+        end
       else
         redirect_to root_url
       end
     elsif school_logged_in?
       if @room.school.id == current_school.id
         @student = @room.student
+        respond_to do |format|
+          format.html # html形式でアクセスがあった場合は特に何もなし(@messages = Message.allして終わり）
+          format.json { @new_message = Message.where(room_id: @room.id).where('id > ?', params[:message][:id]) } # json形式でアクセスがあった場合は、params[:message][:id]よりも大きいidがないかMessageから検索して、@new_messageに代入する
+        end
       else
         redirect_to root_url
       end

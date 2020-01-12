@@ -1,17 +1,17 @@
 <% if student_logged_in? %>
   <h3><%= @school.name %>とのチャットルーム</h3>
-  <div class="chat-field">
+  <div class="chat-field student-field">
     <% @messages.each do |message| %>
       <!-- メッセージがUserによるものだったら -->
       <% if message.is_student %>
         <!-- メッセージを右に寄せる -->
-        <div class="right-message">
+        <div class="student-message messages" data-id=<%= message.id %>>
           <%= message.content %>
         </div>
       <!-- メッセージがShopによるものだったら -->
       <% else %>
         <!-- メッセージを左に寄せる -->
-        <div class="left-message">
+        <div class="school-message messages" data-id=<%= message.id %>>
           <%= message.content %>
         </div>
       <% end %>
@@ -19,18 +19,18 @@
   </div>
 <% elsif school_logged_in? %>
   <h3><%= @student.name %>とのチャットルーム</h3>
-  <div class="chat-field">
+  <div class="chat-field school-field">
     <% @messages.each do |message| %>
       <!-- メッセージがUserによるものだったら -->
       <% if message.is_student %>
         <!-- メッセージを左に寄せる -->
-        <div class="left-message">
+        <div class="student-message messages" data-id=<%= message.id %>>
           <%= message.content %>
         </div>
       <!-- メッセージがShopによるものだったら -->
       <% else %>
         <!-- メッセージを右に寄せる -->
-        <div class="right-message">
+        <div class="school-message messages" data-id=<%= message.id %>>
           <%= message.content %>
         </div>
       <% end %>
