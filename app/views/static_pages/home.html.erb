@@ -1,11 +1,24 @@
 <div class="top-wrapper">
-  <div class="top-img">
-    <%= link_to image_tag("top-img.jpg", alt: "top-img"), root_path %>
+  <div class="top-img" id="top-slide">
+    <%= link_to image_tag("first-img.jpg", alt: "first-img"), root_path %>
+    <%= link_to image_tag("second-img.jpg", alt: "second-img"), root_path %>
+    <%= link_to image_tag("third-img.jpg", alt: "third-img"), root_path %>
+    <%= link_to image_tag("forth-img.jpg", alt: "forth-img"), root_path %>
+  </div>
+  <div class="top-school-logo-wrapper">
+    <%= link_to image_tag("tokyotech-logo.png", alt: "tokyotech-logo-img"), "https://www.titech.ac.jp/" %>
+    <%= link_to image_tag("tokyouniv-logo.png", alt: "tokyouniv-logo-img"), "https://www.u-tokyo.ac.jp/ja/index.html" %>
+    <%= link_to image_tag("keiouniv-logo.png", alt: "keiouniv-logo-img"), "https://www.keio.ac.jp/ja/" %>
+    <%= link_to image_tag("kyotouniv-logo.png", alt: "kyotouniv-logo-img"), "http://kyoto-u.ac.jp/ja" %>
+    <%= link_to image_tag("doshishauniv-logo.png", alt: "doshishauniv-logo-img"), "https://www.doshisha.ac.jp/" %>
+    <%= link_to image_tag("sophiauniv-logo.png", alt: "sophiauniv-logo-img"), "https://www.sophia.ac.jp/" %>
+    <%= link_to image_tag("wasedauniv-logo.png", alt: "wasedauniv-logo-img"), "https://www.waseda.jp/top/" %>
+    <%= link_to image_tag("osakauniv-logo.png", alt: "osakauniv-logo-img"), "https://www.osaka-u.ac.jp/ja" %>
   </div>
   <div class="top-register-wrapper container">
-    <div class="row register-button-wrapper">
-      <%= link_to "高校生として登録", student_signup_path, class: "btn btn-primary" %>
-      <%= link_to "学校関係者として登録", school_signup_path, class: "btn btn-primary" %>
+    <div class="register-button-wrapper">
+      <%= link_to "高校生として登録", student_signup_path, class: "btn-border-bottom" %>
+      <%= link_to "学校関係者として登録", school_signup_path, class: "btn-border-bottom" %>
     </div>
   </div>
 

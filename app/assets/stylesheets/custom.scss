@@ -9,6 +9,7 @@ $main-blue: #123166;
 
 
 @mixin box_sizing {
+
   -moz-box-sizing:    border-box;
   -webkit-box-sizing: border-box;
   box-sizing:         border-box;
@@ -28,8 +29,21 @@ textarea {
   resize: vertical;
 }
 
+.container {
+  width: 100%;
+}
+
 .center {
   text-align: center;
+}
+
+.main-blue {
+  color: $main-blue;
+}
+
+.h1-design {
+  text-align: center;
+  color: $main-blue;
 }
 
 /* typography */
@@ -55,33 +69,59 @@ p {
 
 /* header */
 
-#logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: $main-blue;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
-  &:hover {
-    color: $gray-light;
+header {
+  background-color: white;
+  .logo {
+    float: left;
+    margin-right: 10px;
+    margin-left: 50px;
+    font-size: 1.7em;
+    color: $main-blue;
+    letter-spacing: -1px;
+    padding-top: 9px;
+    font-weight: bold;
+    position: relative;
+    display: inline-block;
     text-decoration: none;
   }
+
+  .logo:before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 4px;
+    top:100%;
+    left: 0;
+    border-radius: 3px;
+    background:$main-blue;
+    transition: .2s;
+  }
+
+  .logo:hover:before {
+    top: -webkit-calc(100% - 3px);
+    top: calc(100% - 3px);
+  }
+
+  .nav {
+    li {
+      a {
+        color: $main-blue;
+        font-weight: bold;
+      }
+    }
+  }
 }
+
 
 /* footer */
 
 footer {
   margin-top: 45px;
   padding-top: 5px;
-  border-top: 1px solid #eaeaea;
-  color: #777;
+  border-top: 5px dotted $main-blue;
+  color: $main-blue;
   a {
-    color: #555;
-    &:hover {
-      color: #222;
-    }
+    color: $main-blue;
   }
   small {
     float: left;
@@ -185,13 +225,28 @@ input {
   margin-left: 0;
 }
 
+// 各ページのCSS
+
 // home.html.erb
 
 .top-wrapper {
   .top-img {
+    height: 550px;
     img {
       width: 100%;
     }
+  }
+  #top-slide{
+    position:relative;
+    img {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+  .top-school-logo-wrapper {
+    text-align: center;
+    margin-bottom: 25px;
   }
 }
 
@@ -199,8 +254,166 @@ input {
   padding-top: 20px;
   .register-button-wrapper {
     text-align: center;
+    .btn-border-bottom {
+      position: relative;
+      display: inline-block;
+      font-weight: bold;
+      padding: 0.25em 0;
+      text-decoration: none;
+      color: $main-blue;
+      margin: 0 25px;
+      font-size: 20px;
+    }
+
+    .btn-border-bottom:before {
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 4px;
+      top:100%;
+      left: 0;
+      border-radius: 3px;
+      background: $main-blue;
+      transition: .2s;
+    }
+
+    .btn-border-bottom:hover:before {
+      top: -webkit-calc(100% - 3px);
+      top: calc(100% - 3px);
+    }
   }
 }
+
+// students/new.html.erb
+
+.h1-signup {
+  text-align: center;
+  color: $main-blue;
+}
+
+.student-signup {
+  .label {
+    color: $main-blue;
+    font-size: 15px;
+    padding: 8px 0;
+  }
+  .btn {
+    background-color: $main-blue;
+  }
+}
+
+// schools/new.html.erb
+
+.h1-signup {
+  text-align: center;
+  color: $main-blue;
+}
+
+.school-signup {
+  .label {
+    color: $main-blue;
+    font-size: 15px;
+    padding: 8px 0;
+  }
+  .btn {
+    background-color: $main-blue;
+  }
+}
+
+// student_sessions/new.html.erb
+
+.h1-login {
+  text-align: center;
+  color: $main-blue;
+  margin-bottom: 40px;
+}
+
+.student-login {
+  .label {
+    color: $main-blue;
+    font-size: 15px;
+    padding: 8px 0;
+  }
+  .btn {
+    background-color: $main-blue;
+  }
+  .forgot-password {
+    color: $main-blue;
+    :hover {
+      color: $main-blue;
+    }
+  }
+}
+
+// school_sessions/new.html.erb
+
+.h1-login {
+  text-align: center;
+  color: $main-blue;
+  margin-bottom: 40px;
+}
+
+.school-login {
+  .label {
+    color: $main-blue;
+    font-size: 15px;
+    padding: 8px 0;
+  }
+  .btn {
+    background-color: $main-blue;
+  }
+  .forgot-password {
+    color: $main-blue;
+    :hover {
+      color: $main-blue;
+    }
+  }
+}
+
+// laboratories/index.html.erb
+
+.index {
+  padding: 0px 100px;
+}
+
+.laboratories {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+  .school {
+    margin-top: 5em;
+    padding-top: 0;
+  }
+  .content {
+    display: block;
+    margin-left: 60px;
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+  .timestamp {
+    color: $gray-light;
+    display: block;
+    margin-left: 60px;
+  }
+  .gravatar {
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
+}
+
+// rooms/index.html.erb
+
+.h1-rooms-index {
+  text-align: center;
+}
+
+// chat room
 
 .student-field {
   .student-message {
@@ -303,38 +516,7 @@ span.picture {
   }
 }
 
-/* laboratories */
 
-.laboratories {
-  list-style: none;
-  padding: 0;
-  li {
-    padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
-  }
-  .school {
-    margin-top: 5em;
-    padding-top: 0;
-  }
-  .content {
-    display: block;
-    margin-left: 60px;
-    img {
-      display: block;
-      padding: 5px 0;
-    }
-  }
-  .timestamp {
-    color: $gray-light;
-    display: block;
-    margin-left: 60px;
-  }
-  .gravatar {
-    float: left;
-    margin-right: 10px;
-    margin-top: 5px;
-  }
-}
 
 aside {
   textarea {

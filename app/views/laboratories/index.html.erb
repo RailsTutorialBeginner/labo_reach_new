@@ -1,9 +1,10 @@
 <% provide(:title, 'All laboratories') %>
-<h1>All laboratories</h1>
+<h1 class="h1-design">研究室一覧</h1>
 
-<ul class="laboratories">
-  <%= will_paginate @laboratories %>
-  <% @laboratories.each do |laboratory| %>
+<div class="index">
+  <ul class="laboratories">
+    <%= will_paginate @laboratories %>
+    <% @laboratories.each do |laboratory| %>
     <li>
       <%= link_to gravatar_for(laboratory.school, size: 50), laboratory.school %>
       <span class="school"><%= link_to laboratory.school.name, laboratory.school %></span>
@@ -15,10 +16,11 @@
       <span class="timestamp">
         Posted <%= time_ago_in_words(laboratory.created_at) %> ago.
         <% if current_school?(laboratory.school) %>
-          <%= link_to "delete", laboratory, method: :delete, data: { confirm: "You sure?" } %>
+        <%= link_to "delete", laboratory, method: :delete, data: { confirm: "You sure?" } %>
         <% end %>
       </span>
     </li>
-  <% end %>
-  <%= will_paginate @laboratories %>
-</ul>
+    <% end %>
+    <%= will_paginate @laboratories %>
+  </ul>
+</div>
