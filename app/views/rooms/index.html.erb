@@ -1,42 +1,58 @@
-<!--Studentでログインしてたら-->
-<% if student_logged_in? %>
-  <h1 class="h1-rooms-index">学校一覧</h1>
-  <% @schools.each do |school| %>
-    <%= school.name %>
-    <% if @school_ids.include?(school.id) %>
-      <br>
-      <%= link_to "チャットへ", room_path(current_student.rooms.find_by(school_id: school.id)) %>
-      <br>
-    <% else %>
-      <%= form_for Room.new do |f| %>
-        <%= f.hidden_field :school_id, :value => school.id %>
-        <%= f.submit "チャットルームを作る" %>
-      <% end %>
-    <% end %>
-  <% end %>
-<!--Schoolでログインしてたら-->
-<% elsif school_logged_in? %>
-  <h1 class="h1-rooms-index">生徒一覧</h1>
-  <% @students.each do |student| %>
-    <%= student.name %>
-    <% if @student_ids.include?(student.id) %>
-      <br>
-      <%= link_to "チャットへ", room_path(current_school.rooms.find_by(student_id: student.id)) %>
-      <br>
-    <% else %>
-      <%= form_for Room.new do |f| %>
-        <%= f.hidden_field :student_id, :value => student.id %>
-        <%= f.submit "チャットルームを作る" %>
-      <% end %>
-    <% end %>
-  <% end %>
+<div class="rooms index">
+  <!--Studentでログインしてたら-->
+  <% if student_logged_in? %>
+    <h1 class="h1-design">学校一覧</h1>
+    <div class="schools">
+      <div class="container">
+        <div class="row">
+          <% @schools.each do |school| %>
+          <div class="col-lg-4 school">
+            <%= gravatar_for(school, size: 50) %><%= school.name %>
+            <% if @school_ids.include?(school.id) %>
+              <br>
+              <%= link_to "チャットへ", room_path(current_student.rooms.find_by(school_id: school.id)), class: "enter-btn" %>
+            <% else %>
+              <%= form_for Room.new do |f| %>
+                <%= f.hidden_field :school_id, :value => school.id %>
+                <%= f.submit "チャットルームを作る", class: "create-btn" %>
+              <% end %>
+            <% end %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <!--Schoolでログインしてたら-->
+  <% elsif school_logged_in? %>
+  <h1 class="h1-design">生徒一覧</h1>
+  <div class="students">
+    <div class="container">
+      <div class="row">
+        <% @students.each do |student| %>
+        <div class="col-lg-4 student">
+          <%= gravatar_for(student, size: 50) %><%= student.name %>
+          <% if @student_ids.include?(student.id) %>
+            <br>
+            <%= link_to "チャットへ", room_path(current_school.rooms.find_by(student_id: student.id)), class: "enter-btn" %>
+          <% else %>
+            <%= form_for Room.new do |f| %>
+              <%= f.hidden_field :student_id, :value => student.id %>
+              <%= f.submit "チャットルームを作る", class: "create-btn" %>
+            <% end %>
+          <% end %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
-<!--ログインしてなかったら-->
-<% else %>
+  <!--ログインしてなかったら-->
+  <% else %>
   <h3>生徒の方はこちら</h3>
   <%= link_to "ログイン", student_login_path %>
   <%= link_to "新規登録", student_signup_path %>
   <h3>学校関係者の方はこちら</h3>
   <%= link_to "ログイン", school_login_path %>
   <%= link_to "新規登録", school_signup_path %>
-<% end %>
+  <% end %>
+</div>

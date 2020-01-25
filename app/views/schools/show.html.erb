@@ -1,30 +1,58 @@
 <% provide(:title, @school.name) %>
+
+<div class="school_info">
+  <h1>
+    <%= gravatar_for @school %>
+    <%= @school.name %>
+  </h1>
+</div>
 <div class="row">
-  <aside class="col-md-4">
-    <section class="user-info">
-      <h1>
-        <%= gravatar_for @school %>
-        <%= @school.name %>
-      </h1>
-    </section>
+  <div class="col-md-8">
+    <% if @school.events.any? %>
+      <h3 class="h1-design">投稿済みイベント (<%= @school.events.count %>)</h3>
+      <div class="index events">
+        <div class="will-paginate">
+          <%= will_paginate @events %>
+        </div>
+        <div class="container">
+            <div class="row">
+              <% @events.each do |event| %>
+              <div class="col-lg-6 event">
+                  <div class="event-img">
+                    <%= image_tag event.picture.url if event.picture? %>
+                  </div>
+                  <div class="name">
+                    <%= event.name %> (<%= link_to gravatar_for(event.school, size: 20), event.school %><%= link_to event.school.name, event.school %>)
+                  </div>
+                  <div class="content">
+                    <%= event.content %>
+                  </div>
+                  <div class="posted-time">
+                    Posted <%= time_ago_in_words(event.created_at) %> ago.
+                    <% if current_school?(event.school) %>
+                    <%= link_to "delete", event, method: :delete, data: { confirm: "You sure?" } %>
+                    <% end %>
+                  </div>
+              </div>
+              <% end %>
+            </div>
+        </div>
+        <div class="will-paginate">
+          <%= will_paginate @events %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-4 event-lab-form">
     <% if school_logged_in? %>
-      <h3>New event</h3>
+      <h3>新規イベント登録</h3>
       <section class="event_form">
         <%= render 'shared/event_form' %>
       </section>
-      <h3>New laboratory</h3>
+      <h3>新規研究室登録</h3>
       <section class="laboratory_form">
         <%= render 'shared/laboratory_form' %>
       </section>
-    <% end %>
-  </aside>
-  <div class="col-md-8">
-    <% if @school.events.any? %>
-      <h3>Events (<%= @school.events.count %>)</h3>
-      <ol class="events">
-        <%= render @events %>
-      </ol>
-      <%= will_paginate @events %>
     <% end %>
   </div>
 </div>

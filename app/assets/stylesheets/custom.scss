@@ -146,36 +146,8 @@ footer {
   @include box_sizing;
 }
 
-/* sidebar */
-
-aside {
-  section.user_info {
-    margin-top: 20px;
-  }
-  section {
-    padding: 10px 0;
-    margin-top: 20px;
-    &:first-child {
-      border: 0;
-      padding-top: 0;
-    }
-    span {
-      display: block;
-      margin-bottom: 3px;
-      line-height: 1;
-    }
-    h1 {
-      font-size: 1.4em;
-      text-align: left;
-      letter-spacing: -1px;
-      margin-bottom: 3px;
-      margin-top: 0px;
-    }
-  }
-}
-
 .gravatar {
-  float: left;
+  //float: left;
   margin-right: 10px;
 }
 
@@ -377,153 +349,275 @@ input {
 }
 
 .laboratories {
-  list-style: none;
   padding: 0;
-  li {
-    padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
+  .will-paginate {
+    text-align: center;
   }
-  .school {
-    margin-top: 5em;
-    padding-top: 0;
-  }
-  .content {
-    display: block;
-    margin-left: 60px;
-    img {
-      display: block;
-      padding: 5px 0;
+  .laboratory {
+    height: 500px;
+    .lab-img {
+      width: 100%;
+      height: 250px;
+      background-color: lightgray;
+      img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+      }
     }
-  }
-  .timestamp {
-    color: $gray-light;
-    display: block;
-    margin-left: 60px;
-  }
-  .gravatar {
-    float: left;
-    margin-right: 10px;
-    margin-top: 5px;
+    .name {
+      font-size: 20px;
+      .gravatar {
+        margin-right: 10px;
+        margin-left: 5px;
+        margin-bottom: 2px;
+        //margin-top: 5px;
+      }
+    }
+    .content {
+      word-break: break-all;
+    }
+    .posted-time {
+      float: right;
+    }
   }
 }
 
 // rooms/index.html.erb
 
-.h1-rooms-index {
-  text-align: center;
-}
-
-// chat room
-
-.student-field {
-  .student-message {
-    text-align: right;
+.rooms {
+  .h1-design {
+    margin-bottom: 50px;
   }
-  .school-message {
-    text-align: left;
-  }
-}
-
-.school-field {
-  .student-message {
-    text-align: left;
-  }
-  .school-message {
-    text-align: right;
-  }
-}
-
-/* Students index */
-
-.students {
-  list-style: none;
-  margin: 0;
-  li {
-    overflow: auto;
-    padding: 10px 0;
-    border-bottom: 1px solid $gray-lighter;
-  }
-}
-
-/* Schools index */
-
-.schools {
-  list-style: none;
-  margin: 0;
-  li {
-    overflow: auto;
-    padding: 10px 0;
-    border-bottom: 1px solid $gray-lighter;
-  }
-}
-
-/* events */
-
-.events {
-  list-style: none;
-  padding: 0;
-  li {
-    padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
-  }
-  .school {
-    margin-top: 5em;
-    padding-top: 0;
-  }
-  .content {
-    display: block;
-    margin-left: 60px;
-    img {
-      display: block;
-      padding: 5px 0;
+  .students {
+    padding: 0;
+    .student {
+      padding: 10px 70px;
+      .enter-btn {
+        display: inline-block;
+        width: 200px;
+        height: 25px;
+        border: 1px solid $main-blue;
+        border-radius: 5px;
+        margin-top: 5px;
+        text-align: center;
+        line-height: 25px;
+        color: $main-blue;
+        text-decoration: none;
+      }
+      .create-btn {
+        width: 200px;
+        border-radius: 5px;
+        margin-top: 5px;
+      }
     }
   }
-  .timestamp {
-    color: $gray-light;
-    display: block;
-    margin-left: 60px;
-  }
-  .gravatar {
-    float: left;
-    margin-right: 10px;
-    margin-top: 5px;
+  .schools {
+    padding: 0;
+    .school {
+      padding: 10px 70px;
+      .enter-btn {
+        display: inline-block;
+        width: 200px;
+        height: 25px;
+        border: 1px solid $main-blue;
+        border-radius: 5px;
+        margin-top: 5px;
+        text-align: center;
+        line-height: 25px;
+        color: $main-blue;
+        text-decoration: none;
+      }
+      .create-btn {
+        width: 200px;
+        border-radius: 5px;
+        margin-top: 5px;
+      }
+    }
   }
 }
 
-aside {
-  textarea {
-    height: 100px;
-    margin-bottom: 5px;
+
+
+// rooms/show.html.erb
+
+.chat-room-wrapper {
+  .chat-field {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 80%;
+    margin: 0 auto;
+    height: 500px;
+    .messages {
+      span {
+        display: inline-block;
+        padding: 3px 8px;
+        background-color: lightgray;
+        border-radius: 3px;
+        margin: 3px 6px 3px 6px;
+      }
+    }
+  }
+  .student-field {
+    .student-message {
+      text-align: right;
+    }
+    .school-message {
+      text-align: left;
+    }
+  }
+  .school-field {
+    .student-message {
+      text-align: left;
+    }
+    .school-message {
+      text-align: right;
+    }
+  }
+  form {
+    margin: 10px auto;
+    width: 80%;
+    .message_content {
+      border-radius: 4px;
+    }
+    .submit-btn {
+      border: 1px solid $main-blue;
+      border-radius: 4px;
+      color: $main-blue;
+    }
   }
 }
 
-span.picture {
-  margin-top: 10px;
-  input {
-    border: 0;
+/* students/index.html.erb */
+
+.index {
+  padding: 0px 100px;
+}
+
+.students {
+  padding: 0px;
+  .will-paginate {
+    text-align: center;
+  }
+  .student {
+    margin: 20px 0px;
+    //font-size: 20px;
   }
 }
 
-/* Events index */
+
+/* schools/index.html.erb */
+
+.index {
+  padding: 0px 100px;
+}
+
+.schools {
+  padding: 0px;
+  .will-paginate {
+    text-align: center;
+  }
+  .school {
+    margin: 20px 0px;
+    //font-size: 20px;
+  }
+}
+
+/* students/edit.html.erb */
+
+.student-update {
+  .label {
+    color: $main-blue;
+    font-size: 15px;
+    padding: 8px 0;
+  }
+  .btn {
+    background-color: $main-blue;
+  }
+}
+
+/* schools/edit.html.erb */
+
+.school-update {
+  .label {
+    color: $main-blue;
+    font-size: 15px;
+    padding: 8px 0;
+  }
+  .btn {
+    background-color: $main-blue;
+  }
+}
+
+/* events/index.html.erb */
+/* schools/show.html.erbの一部 */
+
+.index {
+  padding: 0px 100px;
+}
 
 .events {
-  list-style: none;
-  margin: 0;
-  li {
-    overflow: auto;
-    padding: 10px 0;
-    border-bottom: 1px solid $gray-lighter;
+  padding: 0;
+  .will-paginate {
+    text-align: center;
+  }
+  .event {
+    height: 500px;
+    .event-img {
+      width: 100%;
+      height: 250px;
+      background-color: lightgray;
+      img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+      }
+    }
+    .name {
+      font-size: 20px;
+      .gravatar {
+        margin-right: 10px;
+        margin-left: 5px;
+        margin-bottom: 2px;
+        //margin-top: 5px;
+      }
+    }
+    .content {
+      word-break: break-all;
+    }
+    .posted-time {
+      float: right;
+    }
   }
 }
 
+/* schools/show.html.erb */
 
+.school_info {
+  //border-bottom: 3px solid $main-blue;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  color: $main-blue;
+}
 
-aside {
+.event-lab-form {
+  color: $main-blue;
   textarea {
     height: 100px;
     margin-bottom: 5px;
   }
 }
+
+/* students/show.html.erb */
+
+.student_info {
+  //border-bottom: 3px solid $main-blue;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  color: $main-blue;
+}
+
+/* ? */
 
 span.picture {
   margin-top: 10px;

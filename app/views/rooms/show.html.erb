@@ -1,44 +1,46 @@
-<% if student_logged_in? %>
-  <h3><%= @school.name %>とのチャットルーム</h3>
-  <div class="chat-field student-field">
-    <% @messages.each do |message| %>
-      <!-- メッセージがUserによるものだったら -->
-      <% if message.is_student %>
-        <!-- メッセージを右に寄せる -->
-        <div class="student-message messages" data-id=<%= message.id %>>
-          <%= message.content %>
-        </div>
-      <!-- メッセージがShopによるものだったら -->
-      <% else %>
-        <!-- メッセージを左に寄せる -->
-        <div class="school-message messages" data-id=<%= message.id %>>
-          <%= message.content %>
-        </div>
+<div class="chat-room-wrapper">
+  <% if student_logged_in? %>
+    <h3 class="h1-design"><%= @school.name %>とのチャットルーム</h3>
+    <div class="chat-field student-field">
+      <% @messages.each do |message| %>
+        <!-- メッセージがUserによるものだったら -->
+        <% if message.is_student %>
+          <!-- メッセージを右に寄せる -->
+          <div class="student-message messages" data-id=<%= message.id %>>
+            <span><%= message.content %></span>
+          </div>
+        <!-- メッセージがShopによるものだったら -->
+        <% else %>
+          <!-- メッセージを左に寄せる -->
+          <div class="school-message messages" data-id=<%= message.id %>>
+            <span><%= message.content %></span>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
-<% elsif school_logged_in? %>
-  <h3><%= @student.name %>とのチャットルーム</h3>
-  <div class="chat-field school-field">
-    <% @messages.each do |message| %>
-      <!-- メッセージがUserによるものだったら -->
-      <% if message.is_student %>
-        <!-- メッセージを左に寄せる -->
-        <div class="student-message messages" data-id=<%= message.id %>>
-          <%= message.content %>
-        </div>
-      <!-- メッセージがShopによるものだったら -->
-      <% else %>
-        <!-- メッセージを右に寄せる -->
-        <div class="school-message messages" data-id=<%= message.id %>>
-          <%= message.content %>
-        </div>
+    </div>
+  <% elsif school_logged_in? %>
+    <h3 class="h1-design"><%= @student.name %>とのチャットルーム</h3>
+    <div class="chat-field school-field">
+      <% @messages.each do |message| %>
+        <!-- メッセージがUserによるものだったら -->
+        <% if message.is_student %>
+          <!-- メッセージを左に寄せる -->
+          <div class="student-message messages" data-id=<%= message.id %>>
+            <span><%= message.content %></span>
+          </div>
+        <!-- メッセージがShopによるものだったら -->
+        <% else %>
+          <!-- メッセージを右に寄せる -->
+          <div class="school-message messages" data-id=<%= message.id %>>
+            <span><%= message.content %></span>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
-<% end %>
+    </div>
+  <% end %>
 
-<%= form_for [@room, @message], id: "new_message" do |f| %>
-  <%= f.text_field :content, id: "message_content" %>
-  <%= f.submit "メッセージを送る", class: "submit-btn" %>
-<% end %>
+  <%= form_for [@room, @message], id: "new_message" do |f| %>
+    <%= f.text_field :content, id: "message_content", class: "message_content" %>
+    <%= f.submit "メッセージを送る", class: "submit-btn" %>
+  <% end %>
+</div>

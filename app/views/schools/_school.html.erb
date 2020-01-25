@@ -1,8 +1,8 @@
-<li>
-  <%= gravatar_for school, size: 50 %>
-  <%= link_to school.name, school %>
-  <% if current_school.admin? && !current_school?(school) %>
+<div class="col-lg-4 school">
+    <%= gravatar_for school, size: 50 %>
+    <%= link_to school.name, school %>
+    <% if current_school.admin? && !current_school?(school) %>
     | <%= link_to "delete", school, method: :delete,
-                                  data: { confirm: "You sure?" } %>
-  <% end %>
-</li>
+    data: { confirm: "You sure?" } %>
+    <% end %>
+</div>

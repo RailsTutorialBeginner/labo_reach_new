@@ -33,7 +33,7 @@ class EventsController < ApplicationController
   private
 
     def event_params
-      params.require(:event).permit(:content, :picture)
+      params.require(:event).permit(:name, :content, :picture)
     end
 
     def correct_school

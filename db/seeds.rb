@@ -1,4 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
+ # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
 # Examples:
@@ -32,8 +32,9 @@ end
 
 schools = School.order(:created_at).take(6)
 50.times do
+  name = Faker::Name.name
   content = Faker::Lorem.sentence(5)
-  schools.each { |school| school.events.create!(content: content) }
+  schools.each { |school| school.events.create!(name: name, content: content) }
 end
 
 schools = School.order(:created_at).take(6)

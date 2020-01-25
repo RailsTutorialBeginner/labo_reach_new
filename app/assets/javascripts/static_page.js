@@ -19,6 +19,7 @@ $(function(){
   var Timer;
   function startTimer(){
     Timer = setInterval(function(){
+      console.log(lastPage)
       if(page === lastPage){
         page = 0;
         changePage();

@@ -6,9 +6,9 @@
 $(function(){
   function buildMESSAGE(message) {
     if(message.is_student){
-      var messages = $('.messages:last').append('<div class="student-message messages" data-id=' + message.id + '>' + message.content + '</div>');
+      var messages = $('.messages:last').append('<div class="student-message messages" data-id=' + message.id + '><span>' + message.content + '</span></div>');
     } else {
-      var messages = $('.messages:last').append('<div class="school-message messages" data-id=' + message.id + '>' + message.content + '</div>');
+      var messages = $('.messages:last').append('<div class="school-message messages" data-id=' + message.id + '><span>' + message.content + '</span></div>');
     }
   }
 
@@ -48,9 +48,9 @@ $(function(){
 $(document).on('turbolinks:load', function(){
   function buildHTML(message) {
     if(message.is_student){
-      var html = '<div class="student-message messages" data-id=' + message.id + '>' + message.content + '</div>';
+      var html = '<div class="student-message messages" data-id=' + message.id + '><span>' + message.content + '</span></div>';
     } else {
-      var html = '<div class="school-message messages" data-id=' + message.id + '>' + message.content + '</div>';
+      var html = '<div class="school-message messages" data-id=' + message.id + '><span>' + message.content + '</span></div>';
     }
   return html;
   }

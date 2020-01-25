@@ -1,10 +1,16 @@
 <% provide(:title, 'All schools') %>
-<h1>学校一覧</h1>
+<h1 class="h1-design">学校一覧</h1>
 
-<%= will_paginate %>
-
-<ul class="schools">
-  <%= render @schools %>
-</ul>
-
-<%= will_paginate %>
+<div class="index schools">
+  <div class="will-paginate">
+    <%= will_paginate %>
+  </div>
+  <div class="container">
+    <div class="row">
+      <%= render @schools %>
+    </div>
+  </div>
+  <div class="will-paginate">
+    <%= will_paginate %>
+  </div>
+</div>
