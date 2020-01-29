@@ -6,6 +6,10 @@ class LaboratoriesController < ApplicationController
     @laboratories = Laboratory.all.paginate(page: params[:page])
   end
 
+  def show
+    @laboratory = Laboratory.find(params[:id])
+  end
+
   def create
     @laboratory = current_school.laboratories.build(laboratory_params)
     if @laboratory.save

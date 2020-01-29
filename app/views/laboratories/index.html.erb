@@ -14,7 +14,7 @@
               <%= image_tag laboratory.picture.url if laboratory.picture? %>
             </div>
             <div class="name">
-              <%= laboratory.name %> (<%= link_to gravatar_for(laboratory.school, size: 20), laboratory.school %><%= link_to laboratory.school.name, laboratory.school %>)
+              <%= link_to laboratory.name, laboratory %> (<%= link_to gravatar_for(laboratory.school, size: 20), laboratory.school %><%= link_to laboratory.school.name, laboratory.school %>)
             </div>
             <div class="content">
               <%= laboratory.content %>

@@ -22,7 +22,7 @@
                     <%= image_tag event.picture.url if event.picture? %>
                   </div>
                   <div class="name">
-                    <%= event.name %> (<%= link_to gravatar_for(event.school, size: 20), event.school %><%= link_to event.school.name, event.school %>)
+                    <%= link_to event.name, event %> (<%= link_to gravatar_for(event.school, size: 20), event.school %><%= link_to event.school.name, event.school %>)
                   </div>
                   <div class="content">
                     <%= event.content %>

@@ -1,0 +1,21 @@
+<% provide(:title, 'Laboratory') %>
+<h1 class="h1-design">研究室詳細</h1>
+
+<div class="event-labo-show-wrapper">
+  <div class="name">
+    <%= @laboratory.name %> (<%= link_to gravatar_for(@laboratory.school, size: 20), @laboratory.school %><%= link_to @laboratory.school.name, @laboratory.school %>)
+  </div>
+  <div class="img">
+    <%= image_tag @laboratory.picture.url if @laboratory.picture? %>
+  </div>
+  <div class="content">
+    <h3>概要</h3>
+    <%= @laboratory.content %>
+  </div>
+  <div class="button-wrapper">
+    <%= link_to "チャットする", "#", class: "btn-border-bottom" %>
+    <%= link_to "所属する系", "#", class: "btn-border-bottom" %>
+    <%= link_to "この研究室の所属する系のイベント", "#", class: "btn-border-bottom" %>
+    <%= link_to "研究室一覧へ", laboratories_path, class: "btn-border-bottom" %>
+  </div>
+</div>

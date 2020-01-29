@@ -8,9 +8,7 @@ class EventsController < ApplicationController
 
   # 後で使う？
   def show
-    if school_logged_in?
-      @feed_items = current_school.feed.paginate(page: params[:page])
-    end
+    @event = Event.find(params[:id])
   end
 
   def create
