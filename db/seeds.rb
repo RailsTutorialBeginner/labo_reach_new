@@ -43,3 +43,7 @@ schools = School.order(:created_at).take(6)
   content = Faker::Lorem.sentence(5)
   schools.each { |school| school.laboratories.create!(name: name, content: content) }
 end
+
+Admin.create!(email: "example@railstutorial.org",
+             password:              "foobar",
+             password_confirmation: "foobar")

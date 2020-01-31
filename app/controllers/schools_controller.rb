@@ -1,7 +1,9 @@
 class SchoolsController < ApplicationController
-  before_action :logged_in_school, only: [:index, :edit, :update, :destroy]
+  before_action :logged_in_school, only: [:edit, :update]
+  before_action :logged_in_student_or_admin, only: [:index]
+  before_action :logged_in_admin, only: [:destroy]
   before_action :correct_school, only: [:edit, :update]
-  before_action :admin_school, only: :destory
+
 
   def new
     @school = School.new

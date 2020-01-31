@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'admin_sessions/new'
+
   get 'admins/new'
 
   root 'static_pages#home'
@@ -15,6 +17,9 @@ Rails.application.routes.draw do
   get '/school_login', to: 'school_sessions#new'
   post '/school_login', to: 'school_sessions#create'
   delete '/school_logout', to: 'school_sessions#destroy'
+  get '/admin_login', to: 'admin_sessions#new'
+  post '/admin_login', to: 'admin_sessions#create'
+  delete '/admin_logout', to: 'admin_sessions#destroy'
   resources :students
   resources :schools
   resources :student_account_activations, only: [:edit]
@@ -26,4 +31,5 @@ Rails.application.routes.draw do
   end
   resources :events, only: [:index, :show, :create, :destroy]
   resources :laboratories, only: [:index, :show, :create, :destroy]
+  resources :admins, only: [:new, :show]
 end

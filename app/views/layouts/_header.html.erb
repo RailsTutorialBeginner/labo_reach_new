@@ -8,7 +8,7 @@
         <li><%= link_to "研究室", laboratories_path %></li>
         <li><%= link_to "イベント", events_path %></li>
         <% if student_logged_in? %>
-          <li><%= link_to "Students", students_path %></li>
+          <li><%= link_to "学校一覧", schools_path %></li>
           <li><%= link_to "メッセージ", rooms_path %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -24,7 +24,7 @@
             </ul>
           </li>
         <% elsif school_logged_in? %>
-          <li><%= link_to "Schools", schools_path %></li>
+          <li><%= link_to "高校生一覧", students_path %></li>
           <li><%= link_to "メッセージ", rooms_path %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -39,6 +39,11 @@
               </li>
             </ul>
           </li>
+        <% elsif admin_logged_in? %>
+          <li><%= link_to "高校生一覧", students_path %></li>
+          <li><%= link_to "学校一覧", schools_path %></li>
+          <li><%= link_to "管理者ページ", current_admin %></li>
+          <li><%= link_to "ログアウト", admin_logout_path, :method => :delete %></li>
         <% else %>
           <li><%= link_to "高校生としてログイン", student_login_path %></li>
           <li><%= link_to "学校関係者としてログイン", school_login_path %></li>

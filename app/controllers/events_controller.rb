@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
-  before_action :logged_in_school, only: [:create, :destroy]
-  before_action :correct_school, only: :destroy
+  before_action :logged_in_school_or_admin, only: [:create, :destroy]
+  before_action :correct_school_or_admin, only: :destroy
 
   def index
     @events = Event.all.paginate(page: params[:page])
@@ -34,8 +34,12 @@ class EventsController < ApplicationController
       params.require(:event).permit(:name, :content, :picture)
     end
 
-    def correct_school
-      @event = current_school.events.find_by(id: params[:id])
-      redirect_to root_url if @event.nil?
+    def correct_school_or_admin
+      if admin_logged_in?
+        @event = Event.find_by(id: params[:id])
+      else
+        @event = current_school.events.find_by(id: params[:id])
+        redirect_to root_url if @event.nil?
+      end
     end
 end

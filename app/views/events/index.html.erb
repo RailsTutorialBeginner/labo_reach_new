@@ -21,7 +21,7 @@
               </div>
               <div class="posted-time">
                 Posted <%= time_ago_in_words(event.created_at) %> ago.
-                <% if current_school?(event.school) %>
+                <% if current_school?(event.school) || admin_logged_in? %>
                 <%= link_to "delete", event, method: :delete, data: { confirm: "You sure?" } %>
                 <% end %>
               </div>

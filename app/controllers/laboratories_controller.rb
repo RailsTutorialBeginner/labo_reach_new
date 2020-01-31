@@ -1,6 +1,6 @@
 class LaboratoriesController < ApplicationController
-  before_action :logged_in_school, only: [:create, :destroy]
-  before_action :correct_school, only: :destroy
+  before_action :logged_in_school_or_admin, only: [:create, :destroy]
+  before_action :correct_school_or_admin, only: :destroy
 
   def index
     @laboratories = Laboratory.all.paginate(page: params[:page])
@@ -32,8 +32,12 @@ class LaboratoriesController < ApplicationController
       params.require(:laboratory).permit(:name, :content, :picture)
     end
 
-    def correct_school
-      @laboratory = current_school.laboratories.find_by(id: params[:id])
-      redirect_to root_url if @laboratory.nil?
+    def correct_school_or_admin
+      if admin_logged_in?
+        @laboratory = Laboratory.find_by(id: params[:id])
+      else
+        @laboratory = current_school.laboratories.find_by(id: params[:id])
+        redirect_to root_url if @laboratory.nil?
+      end
     end
 end
