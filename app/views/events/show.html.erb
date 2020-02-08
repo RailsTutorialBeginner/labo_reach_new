@@ -15,10 +15,16 @@
   <div class="event-detailed">
 
   </div>
+  <div class="posted-time">
+    Posted <%= time_ago_in_words(@event.created_at) %> ago.
+    <% if current_school?(@event.school) %>
+    <%= link_to "delete", event_path(@event, params: { event: { deleted: 1} }), method: :patch, data: { confirm: "You sure?" } %>
+    <% end %>
+    <% if admin_logged_in? %>
+    <%= link_to "physical delete", @event, method: :delete, data: { confirm: "You sure?" } %> | <%= link_to "logical delete", event_path(@event, params: { event: { deleted: 1} }), method: :patch %> | <%= link_to "logical delete cancel", event_path(@event, params: { event: { deleted: 0} }), method: :patch %>
+    <% end %>
+  </div>
   <div class="button-wrapper">
-    <%= link_to "チャットする", "#", class: "btn-border-bottom" %>
-    <%= link_to "関連の系", "#", class: "btn-border-bottom" %>
-    <%= link_to "関連研究室", "#", class: "btn-border-bottom" %>
     <%= link_to "イベント一覧へ", events_path, class: "btn-border-bottom" %>
   </div>
 </div>

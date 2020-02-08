@@ -7,8 +7,5 @@
   </span>
   <span class="timestamp">
     Posted <%= time_ago_in_words(event.created_at) %> ago.
-    <% if current_school?(event.school) %>
-      <%= link_to "delete", event, method: :delete, data: { confirm: "You sure?" } %>
-    <% end %>
   </span>
 </li>

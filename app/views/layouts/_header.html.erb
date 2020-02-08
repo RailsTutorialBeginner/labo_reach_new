@@ -16,7 +16,7 @@
             </a>
             <ul class="dropdown-menu">
               <li><%= link_to "プロフィール", current_student %></li>
-              <li><%= link_to "設定", edit_student_path(current_student) %></li>
+              <li><%= link_to "プロフィール編集", edit_student_path(current_student) %></li>
               <li class="divider"></li>
               <li>
                 <%= link_to "ログアウト", student_logout_path, :method => :delete %>
@@ -32,7 +32,9 @@
             </a>
             <ul class="dropdown-menu">
               <li><%= link_to "プロフィール", current_school %></li>
-              <li><%= link_to "設定", edit_school_path(current_school) %></li>
+              <li><%= link_to "プロフィール編集", edit_school_path(current_school) %></li>
+              <li><%= link_to "イベント登録", new_event_path %></li>
+              <li><%= link_to "研究室登録", new_laboratory_path %></li>
               <li class="divider"></li>
               <li>
                 <%= link_to "ログアウト", school_logout_path, :method => :delete %>

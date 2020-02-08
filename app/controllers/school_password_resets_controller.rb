@@ -1,6 +1,7 @@
 class SchoolPasswordResetsController < ApplicationController
   before_action :get_school, only: [:edit, :update]
   before_action :valid_school, only: [:edit, :update]
+  before_action :logical_existing_school, only: [:edit, :update]
   before_action :check_expiration, only: [:edit, :update]
 
   def new
@@ -27,6 +28,8 @@ class SchoolPasswordResetsController < ApplicationController
       @school.errors.add(:password, :blank)
       render 'edit'
     elsif @school.update_attributes(school_params)
+      student_log_out if student_logged_in?
+      admin_log_out if admin_logged_in?
       school_log_in @school
       @school.update_attribute(:reset_digest, nil)
       flash[:success] = "Password has been reset."
@@ -50,6 +53,10 @@ class SchoolPasswordResetsController < ApplicationController
       unless (@school && @school.activated? && @school.authenticated?(:reset, params[:id]))
         redirect_to root_url
       end
+    end
+
+    def logical_existing_school
+      redirect_to root_url if @school.deleted?
     end
 
     def check_expiration

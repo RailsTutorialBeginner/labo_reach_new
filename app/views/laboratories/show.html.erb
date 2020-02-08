@@ -12,10 +12,29 @@
     <h3>概要</h3>
     <%= @laboratory.content %>
   </div>
+  <div class="posted-time">
+    Posted <%= time_ago_in_words(@laboratory.created_at) %> ago.
+    <% if current_school?(@laboratory.school) %>
+    <%= link_to "delete", laboratory_path(@laboratory, params: { laboratory: { deleted: 1} }), method: :patch, data: { confirm: "You sure?" } %>
+    <% end %>
+    <% if admin_logged_in? %>
+    <%= link_to "physical delete", @laboratory, method: :delete, data: { confirm: "You sure?" } %> | <%= link_to "logical delete", laboratory_path(@laboratory, params: { laboratory: { deleted: 1} }), method: :patch %> | <%= link_to "logical delete cancel", laboratory_path(@laboratory, params: { laboratory: { deleted: 0} }), method: :patch %>
+    <% end %>
+  </div>
   <div class="button-wrapper">
-    <%= link_to "チャットする", "#", class: "btn-border-bottom" %>
-    <%= link_to "所属する系", "#", class: "btn-border-bottom" %>
-    <%= link_to "この研究室の所属する系のイベント", "#", class: "btn-border-bottom" %>
+    <% if current_student && current_student.activated? && !current_student.deleted? %>
+      <% if @school_ids.include?(@laboratory.school_id) %>
+        <%= link_to "チャットへ", room_path(current_student.rooms.find_by(school_id: @laboratory.school_id)), class: "btn-border-bottom" %>
+      <% else %>
+        <%= form_for Room.new do |f| %>
+          <%= f.hidden_field :school_id, :value => @laboratory.school_id %>
+          <%= f.submit "チャットルームを作る" %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <%= link_to "チャット（新規登録）", student_signup_path, class: "btn-border-bottom" %>
+      <%= link_to "チャット（ログイン）", student_login_path, class: "btn-border-bottom" %>
+    <% end %>
     <%= link_to "研究室一覧へ", laboratories_path, class: "btn-border-bottom" %>
   </div>
 </div>

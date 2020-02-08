@@ -4,11 +4,13 @@ class StudentSessionsController < ApplicationController
 
   def create
     student = Student.find_by(email: params[:session][:email].downcase)
-    if student && student.authenticate(params[:session][:password])
+    if student && student.authenticate(params[:session][:password]) && !(student.deleted?)
       if student.activated?
+        school_log_out if school_logged_in?
+        admin_log_out if admin_logged_in?
         student_log_in student
         params[:session][:remember_me] == '1' ? student_remember(student) : student_forget(student)
-        redirect_back_or student
+        redirect_to student
       else
         message = "Account not activated. "
         message += "Check your email for the activation link."
@@ -16,7 +18,11 @@ class StudentSessionsController < ApplicationController
         redirect_to root_url
       end
     else
-      flash.now[:danger] = "Invalid email/password combination"
+      if student.deleted?
+        flash.now[:danger] = "Your account has been suspended."
+      else
+        flash.now[:danger] = "Invalid email/password combination"
+      end
       render 'new'
     end
   end

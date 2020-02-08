@@ -443,6 +443,8 @@ input {
 
 .chat-room-wrapper {
   .chat-field {
+    border: 2px solid $main-blue;
+    border-radius: 4px;
     overflow-y: scroll;
     overflow-x: hidden;
     width: 80%;
@@ -593,6 +595,10 @@ input {
 
 /* schools/show.html.erb */
 
+.school-show-event-index {
+  padding: 0px 100px;
+}
+
 .school_info {
   //border-bottom: 3px solid $main-blue;
   padding-bottom: 20px;
@@ -600,8 +606,13 @@ input {
   color: $main-blue;
 }
 
+/* laboratories/new.html.erb */
+/* events/new.html.erb */
+
 .event-lab-form {
   color: $main-blue;
+  width: 70%;
+  margin: 0 auto;
   textarea {
     height: 100px;
     margin-bottom: 5px;
@@ -673,6 +684,40 @@ input {
     }
 
     .btn-border-bottom:hover:before {
+      top: -webkit-calc(100% - 3px);
+      top: calc(100% - 3px);
+    }
+    input {
+      width: auto;
+      border: initial;
+      background-color: rgba(0,0,0,0);
+      margin: 0;
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .new_room {
+      display: inline-block;
+      position: relative;
+      text-decoration: none;
+      color: $main-blue;
+      margin: 0 25px;
+      font-size: 20px;
+      font-weight: bold;
+      background-color: rgba(0,0,0,0);
+    }
+    .new_room:before {
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 4px;
+      top:100%;
+      left: 0;
+      border-radius: 3px;
+      background: $main-blue;
+      transition: .2s;
+    }
+
+    .new_room:hover:before {
       top: -webkit-calc(100% - 3px);
       top: calc(100% - 3px);
     }

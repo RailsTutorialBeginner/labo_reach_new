@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200131032535) do
+ActiveRecord::Schema.define(version: 20200205084147) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20200131032535) do
     t.datetime "updated_at", null: false
     t.string "picture"
     t.string "name"
+    t.integer "deleted", default: 0
     t.index ["school_id", "created_at"], name: "index_events_on_school_id_and_created_at"
     t.index ["school_id"], name: "index_events_on_school_id"
   end
@@ -38,6 +39,7 @@ ActiveRecord::Schema.define(version: 20200131032535) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "picture"
+    t.integer "deleted", default: 0
     t.index ["school_id"], name: "index_laboratories_on_school_id"
   end
 
@@ -47,6 +49,7 @@ ActiveRecord::Schema.define(version: 20200131032535) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "deleted", default: 0
     t.index ["room_id"], name: "index_messages_on_room_id"
   end
 
@@ -55,6 +58,7 @@ ActiveRecord::Schema.define(version: 20200131032535) do
     t.bigint "school_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "deleted", default: 0
     t.index ["school_id"], name: "index_rooms_on_school_id"
     t.index ["student_id"], name: "index_rooms_on_student_id"
   end
@@ -72,6 +76,7 @@ ActiveRecord::Schema.define(version: 20200131032535) do
     t.datetime "activated_at"
     t.string "reset_digest"
     t.datetime "reset_sent_at"
+    t.integer "deleted", default: 0
     t.index ["email"], name: "index_schools_on_email", unique: true
   end
 
@@ -88,6 +93,7 @@ ActiveRecord::Schema.define(version: 20200131032535) do
     t.datetime "activated_at"
     t.string "reset_digest"
     t.datetime "reset_sent_at"
+    t.integer "deleted", default: 0
     t.index ["email"], name: "index_students_on_email", unique: true
   end
 

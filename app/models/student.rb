@@ -55,6 +55,14 @@ class Student < ApplicationRecord
     reset_sent_at < 2.hours.ago
   end
 
+  def deleted?
+    if self.deleted == 1
+      return true
+    else
+      return false
+    end
+  end
+
   private
 
     def downcase_email

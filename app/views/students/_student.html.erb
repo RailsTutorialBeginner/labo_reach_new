@@ -2,6 +2,6 @@
   <%= gravatar_for student, size: 50 %>
   <%= link_to student.name, student %>
   <% if admin_logged_in? %>
-    | <%= link_to "delete", student, method: :delete, data: { confirm: "You sure?" } %>
+    | <%= link_to "physical delete", student, method: :delete, data: { confirm: "You sure?" } %> | <%= link_to "logical delete", student_path(student, params: { student: { deleted: 1} }), :method => :patch %> | <%= link_to "logical delete cancel", student_path(student, params: { student: { deleted: 0} }), :method => :patch %>
   <% end %>
 </div>

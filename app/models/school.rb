@@ -62,6 +62,14 @@ class School < ApplicationRecord
     Event.where("school_id = ?", id)
   end
 
+  def deleted?
+    if self.deleted == 1
+      return true
+    else
+      return false
+    end
+  end
+
   private
 
     def downcase_email

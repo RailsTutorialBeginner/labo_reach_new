@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'admin_sessions/new'
-
   get 'admins/new'
 
   root 'static_pages#home'
@@ -29,7 +27,7 @@ Rails.application.routes.draw do
   resources :rooms, only: [:index, :show, :create] do
     resources :messages, only: [:create]
   end
-  resources :events, only: [:index, :show, :create, :destroy]
-  resources :laboratories, only: [:index, :show, :create, :destroy]
+  resources :events, only: [:new, :index, :show, :create, :destroy, :update]
+  resources :laboratories, only: [:new, :index, :show, :create, :destroy, :update]
   resources :admins, only: [:new, :show]
 end

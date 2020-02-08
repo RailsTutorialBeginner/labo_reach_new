@@ -2,6 +2,9 @@ class MessagesController < ApplicationController
 
   def create
     @room = Room.find(params[:room_id])
+    if !(admin_logged_in?)
+      redirect_to rooms_url and return unless @room.deleted == 0
+    end
     @message = Message.new(message_params)
     if student_logged_in?
       @message.is_student = true

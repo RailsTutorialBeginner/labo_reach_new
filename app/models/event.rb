@@ -6,6 +6,14 @@ class Event < ApplicationRecord
   validates :content, presence: true
   validate :picture_size
 
+  def deleted?
+    if self.deleted == 1
+      return true
+    else
+      return false
+    end
+  end
+
   private
 
     def picture_size

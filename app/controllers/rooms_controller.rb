@@ -1,15 +1,17 @@
 class RoomsController < ApplicationController
   def index
     if student_logged_in?
-      @schools = School.all
-      rooms = current_student.rooms
+      redirect_to root_url and return if current_student.deleted?
+      @schools = School.where(deleted: 0)
+      rooms = current_student.rooms.where(deleted: 0)
       @school_ids = []
       rooms.each do |room|
         @school_ids << room.school_id
       end
     elsif school_logged_in?
-      @students = Student.all
-      rooms = current_school.rooms
+      redirect_to root_url and return if current_school.deleted?
+      @students = Student.where(deleted: 0)
+      rooms = current_school.rooms.where(deleted: 0)
       @student_ids = []
       rooms.each do |room|
         @student_ids << room.student_id
@@ -19,9 +21,13 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
+    if !(admin_logged_in?)
+      redirect_to root_url and return unless @room.deleted == 0
+    end
     @message = Message.new
     @messages = @room.messages
     if student_logged_in?
+      redirect_to root_url and return if current_student.deleted?
       if @room.student.id == current_student.id
         @school = @room.school
         respond_to do |format|
@@ -32,6 +38,7 @@ class RoomsController < ApplicationController
         redirect_to root_url
       end
     elsif school_logged_in?
+      redirect_to root_url and return if current_school.deleted?
       if @room.school.id == current_school.id
         @student = @room.student
         respond_to do |format|
@@ -48,9 +55,11 @@ class RoomsController < ApplicationController
 
   def create
     if student_logged_in?
+      redirect_to root_url and return if current_student.deleted?
       @room = Room.new(room_school_params)
       @room.student_id = current_student.id
     elsif school_logged_in?
+      redirect_to root_url and return if current_school.deleted?
       @room = Room.new(room_student_params)
       @room.school_id = current_school.id
     else
