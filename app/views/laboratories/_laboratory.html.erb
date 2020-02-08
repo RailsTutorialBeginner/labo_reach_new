@@ -8,8 +8,5 @@
   </span>
   <span class="timestamp">
     Posted <%= time_ago_in_words(laboratory.created_at) %> ago.
-    <% if current_school?(laboratory.school) %>
-      <%= link_to "delete", laboratory, method: :delete, data: { confirm: "You sure?" } %>
-    <% end %>
   </span>
 </li>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200205084147) do
+ActiveRecord::Schema.define(version: 20200208150627) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20200205084147) do
     t.datetime "updated_at", null: false
     t.string "picture"
     t.integer "deleted", default: 0
+    t.integer "department"
     t.index ["school_id"], name: "index_laboratories_on_school_id"
   end
 

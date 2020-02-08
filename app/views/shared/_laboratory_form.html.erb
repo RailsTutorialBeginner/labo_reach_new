@@ -7,6 +7,411 @@
 
     <%= f.label :content %>
     <%= f.text_area :content, placeholder: "Compose new laboratory..." %>
+
+    【文学部】
+    <br />
+    <div class="one-set">
+      <%= f.radio_button :department, 1, class: "radio-button" %>
+      <%= f.label :department, "文学", value: 1, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 2, class: "radio-button" %>
+      <%= f.label :department, "史学・地理学", value: 2, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 3, class: "radio-button" %>
+      <%= f.label :department, "哲学", value: 3, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 4, class: "radio-button" %>
+      <%= f.label :department, "心理学", value: 4, class: "radio-button" %>
+    </div>
+
+    <br>
+    【外国語学部】
+    <br />
+    <div class="one-set">
+      <%= f.radio_button :department, 11, class: "radio-button" %>
+      <%= f.label :department, "語学", value: 11, class: "radio-button" %>
+    </div>
+
+    <br />
+    【人文・教養・人間科学部】
+    <br />
+    <div class="one-set">
+      <%= f.radio_button :department, 21, class: "radio-button" %>
+      <%= f.label :department, "文化学", value: 21, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 22, class: "radio-button" %>
+      <%= f.label :department, "教養学", value: 22, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 23, class: "radio-button" %>
+      <%= f.label :department, "総合科学", value: 23, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 24, class: "radio-button" %>
+      <%= f.label :department, "人間科学／人文系その他", value: 24, class: "radio-button" %>
+    </div>
+
+    <br />
+    【教育・教員養成系学部】
+    <br />
+    <div class="one-set">
+      <%= f.radio_button :department, 31, class: "radio-button" %>
+      <%= f.label :department, "教育学", value: 31, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 32, class: "radio-button" %>
+      <%= f.label :department, "小学校・幼稚園課程", value: 32, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 33, class: "radio-button" %>
+      <%= f.label :department, "中学校課程", value: 33, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 34, class: "radio-button" %>
+      <%= f.label :department, "特別支援教育課程", value: 34, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 35, class: "radio-button" %>
+      <%= f.label :department, "養護教諭課程", value: 35, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 36, class: "radio-button" %>
+      <%= f.label :department, "教育支援等その他", value: 36, class: "radio-button" %>
+    </div>
+
+    <br />
+    【法学部】
+    <br />
+    <div class="one-set">
+      <%= f.radio_button :department, 41, class: "radio-button" %>
+      <%= f.label :department, "法学", value: 41, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 42, class: "radio-button" %>
+      <%= f.label :department, "政治学・政策学", value: 42, class: "radio-button" %>
+    </div>
+
+    <br />
+    【経済・経営・商学部】
+    <br />
+    <div class="one-set">
+      <%= f.radio_button :department, 51, class: "radio-button" %>
+      <%= f.label :department, "経済学", value: 51, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 52, class: "radio-button" %>
+      <%= f.label :department, "経営学・経営情報学・商学・会計学", value: 52, class: "radio-button" %>
+    </div>
+
+    <br />
+    【社会・社会福祉学部】
+    <br />
+    <div class="one-set">
+      <%= f.radio_button :department, 61, class: "radio-button" %>
+      <%= f.label :department, "社会学（社会学・観光学・メディア学）", value: 61, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 62, class: "radio-button" %>
+      <%= f.label :department, "福祉学", value: 62, class: "radio-button" %>
+    </div>
+
+    <br />
+    【国際関係学部】
+    <br />
+    <div class="one-set">
+      <%= f.radio_button :department, 71, class: "radio-button" %>
+      <%= f.label :department, "国際関係学・国際文化学", value: 71, class: "radio-button" %>
+    </div>
+
+    <br />
+    【農・獣医畜産・水産学部】
+    <br />
+    <div class="one-set">
+      <%= f.radio_button :department, 81, class: "radio-button" %>
+      <%= f.label :department, "農学", value: 81, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 82, class: "radio-button" %>
+      <%= f.label :department, "農芸化学", value: 82, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 83, class: "radio-button" %>
+      <%= f.label :department, "農業工学", value: 83, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 84, class: "radio-button" %>
+      <%= f.label :department, "農業経済学", value: 84, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 85, class: "radio-button" %>
+      <%= f.label :department, "森林科学", value: 85, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 86, class: "radio-button" %>
+      <%= f.label :department, "獣医学", value: 86, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 87, class: "radio-button" %>
+      <%= f.label :department, "畜産学・動物学", value: 87, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 88, class: "radio-button" %>
+      <%= f.label :department, "水産学", value: 88, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 89, class: "radio-button" %>
+      <%= f.label :department, "生物生産・生物資源学", value: 89, class: "radio-button" %>
+    </div>
+
+    <br />
+    【理学部】
+    <br />
+    <div class="one-set">
+      <%= f.radio_button :department, 101, class: "radio-button" %>
+      <%= f.label :department, "数学・情報科学", value: 101, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 102, class: "radio-button" %>
+      <%= f.label :department, "物理学", value: 102, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 103, class: "radio-button" %>
+      <%= f.label :department, "化学", value: 103, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 104, class: "radio-button" %>
+      <%= f.label :department, "生物学・生命科学", value: 104, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 105, class: "radio-button" %>
+      <%= f.label :department, "地学", value: 105, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 106, class: "radio-button" %>
+      <%= f.label :department, "環境科学／その他", value: 106, class: "radio-button" %>
+    </div>
+
+    <br />
+    【工学部】
+    <br />
+    <div class="one-set">
+      <%= f.radio_button :department, 111, class: "radio-button" %>
+      <%= f.label :department, "機械工学", value: 111, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 112, class: "radio-button" %>
+      <%= f.label :department, "電気・電子工学", value: 112, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 113, class: "radio-button" %>
+      <%= f.label :department, "情報工学", value: 113, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 114, class: "radio-button" %>
+      <%= f.label :department, "土木工学", value: 114, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 115, class: "radio-button" %>
+      <%= f.label :department, "建築学", value: 115, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 116, class: "radio-button" %>
+      <%= f.label :department, "原子力工学", value: 116, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 117, class: "radio-button" %>
+      <%= f.label :department, "応用物理学", value: 117, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 118, class: "radio-button" %>
+      <%= f.label :department, "応用化学", value: 118, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 119, class: "radio-button" %>
+      <%= f.label :department, "生物工学", value: 119, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 120, class: "radio-button" %>
+      <%= f.label :department, "資源工学", value: 120, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 121, class: "radio-button" %>
+      <%= f.label :department, "材料工学", value: 121, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 122, class: "radio-button" %>
+      <%= f.label :department, "航空・宇宙工学", value: 122, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 123, class: "radio-button" %>
+      <%= f.label :department, "経営・管理工学", value: 123, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 124, class: "radio-button" %>
+      <%= f.label :department, "船舶・海洋工学・商船学", value: 124, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 125, class: "radio-button" %>
+      <%= f.label :department, "医用・生体工学", value: 125, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 126, class: "radio-button" %>
+      <%= f.label :department, "光工学分野／その他", value: 126, class: "radio-button" %>
+    </div>
+
+    <br />
+    【医学部・歯学部・薬学部】
+    <br />
+    <div class="one-set">
+      <%= f.radio_button :department, 131, class: "radio-button" %>
+      <%= f.label :department, "医学", value: 131, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 132, class: "radio-button" %>
+      <%= f.label :department, "歯学", value: 132, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 133, class: "radio-button" %>
+      <%= f.label :department, "薬学", value: 133, class: "radio-button" %>
+    </div>
+
+    <br />
+    【看護・医療・栄養学部】
+    <br />
+    <div class="one-set">
+      <%= f.radio_button :department, 141, class: "radio-button" %>
+      <%= f.label :department, "看護学", value: 141, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 142, class: "radio-button" %>
+      <%= f.label :department, "医療・保健学", value: 142, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 143, class: "radio-button" %>
+      <%= f.label :department, "栄養学", value: 143, class: "radio-button" %>
+    </div>
+
+    <br />
+    【家政・生活科学部】
+    <br />
+    <div class="one-set">
+      <%= f.radio_button :department, 151, class: "radio-button" %>
+      <%= f.label :department, "家政・生活科学", value: 151, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 152, class: "radio-button" %>
+      <%= f.label :department, "食物学", value: 152, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 153, class: "radio-button" %>
+      <%= f.label :department, "被服学", value: 153, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 154, class: "radio-button" %>
+      <%= f.label :department, "住居学", value: 154, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 155, class: "radio-button" %>
+      <%= f.label :department, "児童・子ども学", value: 155, class: "radio-button" %>
+    </div>
+
+    <br />
+    【体育・健康科学部】
+    <br />
+    <div class="one-set">
+      <%= f.radio_button :department, 161, class: "radio-button" %>
+      <%= f.label :department, "体育学・健康科学", value: 161, class: "radio-button" %>
+    </div>
+
+    <br />
+    【芸術学部】
+    <br />
+    <div class="one-set">
+      <%= f.radio_button :department, 171, class: "radio-button" %>
+      <%= f.label :department, "美術", value: 171, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 172, class: "radio-button" %>
+      <%= f.label :department, "デザイン", value: 172, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 173, class: "radio-button" %>
+      <%= f.label :department, "工芸", value: 173, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 174, class: "radio-button" %>
+      <%= f.label :department, "音楽", value: 174, class: "radio-button" %>
+    </div>
+
+    <div class="one-set">
+      <%= f.radio_button :department, 175, class: "radio-button" %>
+      <%= f.label :department, "芸術系その他（ＣＧ等含む）", value: 175, class: "radio-button" %>
+    </div>
+
+    <br />
+    【その他】
+    <br />
+    <div class="one-set">
+      <%= f.radio_button :department, 991, class: "radio-button", checked: true %>
+      <%= f.label :department, "その他", value: 991, class: "radio-button" %>
+    </div>
   </div>
   <%= f.submit "登録", class: "btn btn-primary" %>
   <span class="picture">

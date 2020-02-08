@@ -344,6 +344,15 @@ input {
 
 // laboratories/index.html.erb
 
+.search-dropdown {
+  padding: 30px 100px;
+  a {
+    font-size: 24px;
+    color: $main-blue;
+    display: inline-block;
+  }
+}
+
 .index {
   padding: 0px 100px;
 }
@@ -450,7 +459,20 @@ input {
     width: 80%;
     margin: 0 auto;
     height: 500px;
-    .messages {
+  }
+  .student-field {
+    .student-message {
+      text-align: right;
+      span {
+        display: inline-block;
+        padding: 3px 8px;
+        background-color: skyblue;
+        border-radius: 3px;
+        margin: 3px 6px 3px 6px;
+      }
+    }
+    .school-message {
+      text-align: left;
       span {
         display: inline-block;
         padding: 3px 8px;
@@ -460,20 +482,26 @@ input {
       }
     }
   }
-  .student-field {
-    .student-message {
-      text-align: right;
-    }
-    .school-message {
-      text-align: left;
-    }
-  }
   .school-field {
     .student-message {
       text-align: left;
+      span {
+        display: inline-block;
+        padding: 3px 8px;
+        background-color: lightgray;
+        border-radius: 3px;
+        margin: 3px 6px 3px 6px;
+      }
     }
     .school-message {
       text-align: right;
+      span {
+        display: inline-block;
+        padding: 3px 8px;
+        background-color: skyblue;
+        border-radius: 3px;
+        margin: 3px 6px 3px 6px;
+      }
     }
   }
   form {
@@ -723,6 +751,22 @@ input {
     }
   }
 }
+
+/* shared/_laboratory_form.html.erb */
+
+.one-set {
+  display: inline-block;
+  padding-right: 10px;
+  padding-left: 4px;
+  .radio-button {
+    display: inline-block;
+    width: auto;
+  }
+  input {
+    width: auto;
+  }
+}
+
 
 
 /* ? */

@@ -5,6 +5,7 @@ class Laboratory < ApplicationRecord
   validates :school_id, presence: true
   validates :content, presence: true
   validates :name, presence: true
+  validates :department, presence: true
   validate :picture_size
 
   def deleted?

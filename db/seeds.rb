@@ -41,7 +41,7 @@ schools = School.order(:created_at).take(6)
 50.times do
   name = Faker::Name.name
   content = Faker::Lorem.sentence(5)
-  schools.each { |school| school.laboratories.create!(name: name, content: content) }
+  schools.each { |school| school.laboratories.create!(name: name, content: content, department: 1) }
 end
 
 Admin.create!(email: "example@railstutorial.org",

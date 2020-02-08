@@ -10,9 +10,17 @@ class LaboratoriesController < ApplicationController
 
   def index
     if admin_logged_in?
-      @laboratories = Laboratory.all.paginate(page: params[:page])
+      if params[:department]
+        @laboratories = Laboratory.where(department: params[:department]).paginate(page: params[:page])
+      else
+        @laboratories = Laboratory.all.paginate(page: params[:page])
+      end
     else
-      @laboratories = Laboratory.where(deleted: 0).paginate(page: params[:page])
+      if params[:department]
+        @laboratories = Laboratory.where(deleted: 0, department: params[:department]).paginate(page: params[:page])
+      else
+        @laboratories = Laboratory.where(deleted: 0).paginate(page: params[:page])
+      end
     end
   end
 
@@ -76,11 +84,15 @@ class LaboratoriesController < ApplicationController
   private
 
     def laboratory_params
-      params.require(:laboratory).permit(:name, :content, :picture)
+      params.require(:laboratory).permit(:name, :content, :picture, :department)
     end
 
     def laboratory_logical_param
       params.require(:laboratory).permit(:deleted)
+    end
+
+    def laboratory_search
+      params.permit(:department)
     end
 
     def correct_laboratory_or_admin
