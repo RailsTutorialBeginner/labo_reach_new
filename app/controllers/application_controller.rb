@@ -30,14 +30,14 @@ class ApplicationController < ActionController::Base
     def logged_in_student_or_admin
       unless (student_logged_in? || admin_logged_in?)
         flash[:danger] = "Please log in."
-        redirect_to student_login_path
+        redirect_to student_login_url
       end
     end
 
     def logged_in_school_or_admin
       unless (school_logged_in? || admin_logged_in?)
         flash[:danger] = "Please log in."
-        redirect_to school_login_path
+        redirect_to school_login_url
       end
     end
 end

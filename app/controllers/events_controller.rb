@@ -27,7 +27,7 @@ class EventsController < ApplicationController
     @event = current_school.events.build(event_params)
     if @event.save
       flash[:success] = "Event created!"
-      redirect_to root_url
+      redirect_to current_school
     else
       @feed_items = []
       render 'static_pages/home'
@@ -62,7 +62,7 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
     flash[:success] = "Event deleted"
-    redirect_to request.referrer || root_url
+    redirect_to events_url
   end
 
   private

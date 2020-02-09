@@ -10,7 +10,8 @@ class SchoolSessionsController < ApplicationController
         admin_log_out if admin_logged_in?
         school_log_in school
         params[:session][:remember_me] ==  '1' ? school_remember(school) : school_forget(school)
-        redirect_to school
+        flash[:success] = "Welcom to Labo Reach!"
+        redirect_to root_url
       else
         message = "Account not activated."
         message += "Check your email for the activation link."

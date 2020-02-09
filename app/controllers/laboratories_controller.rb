@@ -44,7 +44,7 @@ class LaboratoriesController < ApplicationController
     @laboratory = current_school.laboratories.build(laboratory_params)
     if @laboratory.save
       flash[:success] = "Laboratory created!"
-      redirect_to root_url
+      redirect_to current_school
     else
       render 'static_pages/home'
     end
@@ -78,7 +78,7 @@ class LaboratoriesController < ApplicationController
   def destroy
     @laboratory.destroy
     flash[:success] = "Laboratory deleted"
-    redirect_to request.referer || root_url
+    redirect_to laboratories_url
   end
 
   private
