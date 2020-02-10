@@ -2,40 +2,72 @@
   <% if student_logged_in? %>
     <h3 class="h1-design"><%= @school.name %>とのチャットルーム</h3>
     <div class="chat-field student-field">
-      <% @messages.each do |message| %>
-        <!-- メッセージがUserによるものだったら -->
-        <% if message.is_student %>
+      <div class="messages">
+        <% @messages.each do |message| %>
+          <!-- メッセージがUserによるものだったら -->
+          <% if message.is_student %>
           <!-- メッセージを右に寄せる -->
-          <div class="student-message messages" data-id=<%= message.id %>>
-            <span><%= message.content %></span>
+          <div class="message student-message" data-id=<%= message.id %>>
+            <div class="message-box">
+              <div class="message-content">
+                <div class="message-text">
+                  <%= message.content %>
+                </div>
+              </div>
+            </div>
           </div>
-        <!-- メッセージがShopによるものだったら -->
-        <% else %>
+          <div class="clear"></div>
+          <!-- メッセージがShopによるものだったら -->
+          <% else %>
           <!-- メッセージを左に寄せる -->
-          <div class="school-message messages" data-id=<%= message.id %>>
-            <span><%= message.content %></span>
+          <div class="message school-message" data-id=<%= message.id %>>
+            <div class="message-box">
+              <div class="message-content">
+                <div class="message-text">
+                  <%= message.content %>
+                </div>
+              </div>
+            </div>
           </div>
+          <div class="clear"></div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
   <% elsif school_logged_in? %>
     <h3 class="h1-design"><%= @student.name %>とのチャットルーム</h3>
     <div class="chat-field school-field">
-      <% @messages.each do |message| %>
-        <!-- メッセージがUserによるものだったら -->
-        <% if message.is_student %>
+      <div class="messages">
+        <% @messages.each do |message| %>
+          <!-- メッセージがUserによるものだったら -->
+          <% if message.is_student %>
           <!-- メッセージを左に寄せる -->
-          <div class="student-message messages" data-id=<%= message.id %>>
-            <span><%= message.content %></span>
+          <div class="message student-message" data-id=<%= message.id %>>
+            <div class="message-box">
+              <div class="message-content">
+                <div class="message-text">
+                  <%= message.content %>
+                </div>
+              </div>
+            </div>
           </div>
-        <!-- メッセージがShopによるものだったら -->
-        <% else %>
+          <div class="clear"></div>
+          <!-- メッセージがShopによるものだったら -->
+          <% else %>
           <!-- メッセージを右に寄せる -->
-          <div class="school-message messages" data-id=<%= message.id %>>
-            <span><%= message.content %></span>
+          <div class="message school-message" data-id=<%= message.id %>>
+            <div class="message-box">
+              <div class="message-content">
+                <div class="message-text">
+                  <%= message.content %>
+                </div>
+              </div>
+            </div>
           </div>
+          <div class="clear"></div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
   <% end %>
 

@@ -6,9 +6,9 @@
 $(function(){
   function buildMESSAGE(message) {
     if(message.is_student){
-      var messages = $('.messages:last').append('<div class="student-message messages" data-id=' + message.id + '><span>' + message.content + '</span></div>');
+      var messages = $('.messages:last').append('<div class="message student-message" data-id=' + message.id + '><div class="message-box"><div class="message-content"><div class="message-text">' + message.content + '</div></div></div></div><div class="clear"></div>');
     } else {
-      var messages = $('.messages:last').append('<div class="school-message messages" data-id=' + message.id + '><span>' + message.content + '</span></div>');
+      var messages = $('.messages:last').append('<div class="message school-message" data-id=' + message.id + '><div class="message-box"><div class="message-content"><div class="message-text">' + message.content + '</div></div></div></div><div class="clear"></div>');
     }
   }
 
@@ -48,9 +48,9 @@ $(function(){
 $(document).on('turbolinks:load', function(){
   function buildHTML(message) {
     if(message.is_student){
-      var html = '<div class="student-message messages" data-id=' + message.id + '><span>' + message.content + '</span></div>';
+      var html = '<div class="message student-message" data-id=' + message.id + '><div class="message-box"><div class="message-content"><div class="message-text">' + message.content + '</div></div></div></div><div class="clear"></div>';
     } else {
-      var html = '<div class="school-message messages" data-id=' + message.id + '><span>' + message.content + '</span></div>';
+      var html = '<div class="message school-message" data-id=' + message.id + '><div class="message-box"><div class="message-content"><div class="message-text">' + message.content + '</div></div></div></div><div class="clear"></div>';
     }
   return html;
   }
